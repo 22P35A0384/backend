@@ -28,7 +28,7 @@ const SearchStd = async(req,res,next)=>{
     const input = req.params.name
     console.log(input)
     try {
-        const students = await Student.find({ Student_Name: { $regex:input.toUpperCase(), $options: 'i' } });
+        const students = await Student.find({ Permanent_Address: { $regex:input.toUpperCase(), $options: 'i' } });
         console.log(`Students with "${input}" in their name:`, students.length);
         return res.status(200).json(students);
     } catch (error) {
