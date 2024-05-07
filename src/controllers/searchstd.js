@@ -28,7 +28,7 @@ const SearchStd = async(req,res,next)=>{
     const input = req.params.name
     console.log(input)
     try {
-        const students = await Student.find({ Permanent_Address: { $regex:input, $options: 'i' } });
+        const students = await Student.find({ Sl_No: { $regex:input, $options: 'i' } });
         console.log(`Students with "${input}" in their name:`, students.length);
         return res.status(200).json(students);
     } catch (error) {
