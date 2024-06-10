@@ -29,7 +29,7 @@ const Addnewuser = async (req, res, next) => {
             service: 'gmail',
             auth: {
                 user: 'admin@doraagnet.com',
-                pass: 'okot hhfw rejx qhbi'
+                pass: 'jzug pbst evnk koqp'
             }
         });
         const source = fs.readFileSync('public/mail_templates/welcomemail.hbs', 'utf8');
