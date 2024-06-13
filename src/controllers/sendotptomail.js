@@ -19,7 +19,7 @@ const sendOtp = async (req, res, next) => {
             service: 'gmail',
             auth: {
                 user: 'admin@doraagnet.com',
-                pass: 'jzug pbst evnk koqp'
+                pass: 'doraagent'
             }
         });
 
