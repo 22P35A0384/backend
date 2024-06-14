@@ -16,16 +16,16 @@ const sendOtp = async (req, res, next) => {
 
         // Create Nodemailer transporter
         const transporter = nodemailer.createTransport({
-            service: 'doraagent',
+            service: 'gmail',
             auth: {
-                user: 'admin@doraagent.com',
-                pass: 'gccl cmnr thnz crjk'
+                user: 'venkatasaigangadharsgk@gmail.com',
+                pass: 'kaic dlts bxmb ydqh'
             }
         });
 
         // Email options
         const mailOptions = {
-            from: 'admin@doraagent.com',
+            from: 'venkatasaigangadharsgk@gmail.com',
             to: email,
             subject: 'Greetings From DORA!!!',
             html: html
