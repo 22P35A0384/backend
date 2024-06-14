@@ -28,8 +28,8 @@ const Addnewuser = async (req, res, next) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'admin@doraagnet.com',
-                pass: 'jzug pbst evnk koqp'
+                user: 'venkatasaigangadharsgk@gmail.com',
+                pass: 'kaic dlts bxmb ydqh'
             }
         });
         const source = fs.readFileSync('public/mail_templates/welcomemail.hbs', 'utf8');
@@ -37,7 +37,7 @@ const Addnewuser = async (req, res, next) => {
         const Name = `${fname} ${lname}`;
         const html = template({ Name });
         const mailOptions = {
-            from: 'admin@doraagnet.com',
+            from: 'venkatasaigangadharsgk@gmail.com',
             to: email,
             subject: 'Welcome To DORA',
             html: html
