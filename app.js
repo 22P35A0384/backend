@@ -27,6 +27,7 @@ import Spotlightapp from './src/routers/spotlightrouter.js';
 import Adityaimgapp from './src/routers/adityaphotosrouter.js';
 import Adityastdapp from './src/routers/adityastdrouter.js';
 import Searchstdapp from './src/routers/searchstdrouter.js';
+import Userlistapp from './src/routers/userlistrouter.js';
 
 const app = express();
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -78,6 +79,7 @@ app.use('/',Spotlightapp);
 app.use('/',Adityaimgapp);
 app.use('/',Adityastdapp);
 app.use('/',Searchstdapp);
+app.use('/',Userlistapp);
 
 // Testing Space...... (After Sucessfully Tested Then Put The Code To Controllers And Routers, Finally Import In The Actual Production Code)
 

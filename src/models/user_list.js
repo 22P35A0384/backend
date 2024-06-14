@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const schema = mongoose.Schema;
 
-let Userlist = new schema({
+let User_List = new schema({
     mail:{
         type:String
     }
