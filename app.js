@@ -29,6 +29,7 @@ import Adityastdapp from './src/routers/adityastdrouter.js';
 import Searchstdapp from './src/routers/searchstdrouter.js';
 import Userlistapp from './src/routers/userlistrouter.js';
 import Userlistupdateapp from './src/routers/userlistupdaterouter.js';
+import Removeuserapp from './src/routers/removeuserrouter.js';
 
 const app = express();
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -82,6 +83,7 @@ app.use('/',Adityastdapp);
 app.use('/',Searchstdapp);
 app.use('/',Userlistapp);
 app.use('/',Userlistupdateapp);
+app.use('/',Removeuserapp);
 
 // Testing Space...... (After Sucessfully Tested Then Put The Code To Controllers And Routers, Finally Import In The Actual Production Code)
 
