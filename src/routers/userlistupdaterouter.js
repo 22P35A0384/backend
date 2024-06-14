@@ -1,4 +1,4 @@
-import Adduser from '../controllers/userlistupdate';
+import Adduser from '../controllers/userlistupdate.js';
 import express from 'express';
 const Router = express.Router();
 
