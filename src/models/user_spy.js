@@ -23,7 +23,7 @@ const userSpySchema = new mongoose.Schema({
     searchHistory: [
         {
           query: String,
-          date: { type: Date, default: Date.now }
+          date: { type: Date }
         }
       ]
 });

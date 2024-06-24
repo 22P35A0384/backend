@@ -3,7 +3,7 @@ import user_spy from '../models/user_spy.js';
 import bcrypt from 'bcryptjs';
 
 const PostLogin = async (req, res, next) => {
-    const { user: mail, pass } = req.body;
+    const { user: mail, pass, date } = req.body;
     let checkmail;
     let isPasswordCorrect;
 
@@ -34,12 +34,12 @@ const PostLogin = async (req, res, next) => {
             const user = await user_spy.findOne({ mail: email });
             if (!user) {
                 // If the user does not exist in user_spy, create a new entry
-                const newUserSpy = new user_spy({ mail: email, login: [localDate] });
+                const newUserSpy = new user_spy({ mail: email, login: [date] });
                 await newUserSpy.save();
                 console.log('Success at first login');
             } else {
                 // If the user exists, update the login array
-                user.login.push(localDate);
+                user.login.push(date);
                 await user.save();
                 console.log('Success at subsequent login');
             }
