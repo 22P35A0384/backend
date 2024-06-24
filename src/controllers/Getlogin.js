@@ -1,50 +1,56 @@
 import Userschema from '../models/newuser.js';
+import user_spy from '../models/user_spy.js';
 import bcrypt from 'bcryptjs';
 
-const PostLogin = async(req,res,next)=>{
-    // console.log(req.body)
-    const mail = req.body.user;
-    const pass = req.body.pass;
+const PostLogin = async (req, res, next) => {
+    const { user: mail, pass } = req.body;
     let checkmail;
     let isPasswordCorrect;
-    try{
-        checkmail = await Userschema.findOne({email:mail})
-        // checkpass = await Userschema.findOne({email:mail,password:pass})
-        // return res.status(200).json(true)
-    }catch(err){
-        console.log(err)
+
+    try {
+        // Check if user exists
+        checkmail = await Userschema.findOne({ email: mail });
+    } catch (err) {
+        console.error('Error finding user by email:', err);
+        return res.status(500).json({ msg: 'Internal server error' });
     }
-    // console.log(isPasswordCorrect)
-    if(!checkmail){
-        return res.status(200).json({msg:'Invalid User!'})
-    }else{
-        isPasswordCorrect = bcrypt.compareSync(pass, checkmail.password)
-        if(isPasswordCorrect===false){
-            return res.status(200).json(false)
-        }else{
-            return res.status(200).json(true)
+
+    if (!checkmail) {
+        return res.status(401).json({ msg: 'Invalid User!' });
+    }
+
+    // Check if password is correct
+    isPasswordCorrect = bcrypt.compareSync(pass, checkmail.password);
+    if (!isPasswordCorrect) {
+        return res.status(401).json({ msg: 'Incorrect password' });
+    }
+
+    // Log user login time
+    const logUserLogin = async (email) => {
+        const currentDate = new Date();
+        const localDate = currentDate.toLocaleString(); // Convert to local date and time
+
+        try {
+            const user = await user_spy.findOne({ mail: email });
+            if (!user) {
+                // If the user does not exist in user_spy, create a new entry
+                const newUserSpy = new user_spy({ mail: email, login: [localDate] });
+                await newUserSpy.save();
+                console.log('Success at first login');
+            } else {
+                // If the user exists, update the login array
+                user.login.push(localDate);
+                await user.save();
+                console.log('Success at subsequent login');
+            }
+        } catch (err) {
+            console.error('Error logging user login:', err);
         }
-    }
-    // return res.status(200).json(checkpass._id)
-}
+    };
 
-// const PostLogin = async(req, res, next) => {
-//     const {user, pass} = req.body;
-//     let existingUser;
-//     try{
-//         existingUser = await Userschema.findOne({email:user});
-//     }catch(err){
-//         return console.log(err)
-//     }
-//     if(!existingUser){
-//         return res.status(400).json({message:"Couldnt Find User By This Email."})
-//     }
-//     const isPasswordCorrect = bcrypt.compareSync(pass,existingUser.password);
-//     if(!isPasswordCorrect){
-//         return res.status(400).json({message:"Incorrect Password."})
-//     }
-//     return res.status(200).json(existingUser)
+    await logUserLogin(mail);
 
-// }
+    return res.status(200).json({ msg: 'Login successful' });
+};
 
 export default PostLogin;
