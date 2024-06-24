@@ -16,13 +16,13 @@ const PostLogin = async (req, res, next) => {
     }
 
     if (!checkmail) {
-        return res.status(401).json({ msg: 'Invalid User!' });
+        return res.status(200).json({ msg: 'Invalid User!' });
     }
 
     // Check if password is correct
     isPasswordCorrect = bcrypt.compareSync(pass, checkmail.password);
     if (!isPasswordCorrect) {
-        return res.status(401).json(false);
+        return res.status(200).json(false);
     }
 
     // Log user login time
