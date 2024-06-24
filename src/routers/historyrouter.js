@@ -1,4 +1,4 @@
-import History from "../controllers/history";
+import History from "../controllers/history.js";
 import express from 'express';
 const Router = express.Router();
 
