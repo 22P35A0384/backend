@@ -9,7 +9,8 @@ const History = async (req, res) => {
         return res.status(404).json({ error: 'User not found' });
       }
   
-      user.searchHistory.push({ query, date });
+      user.searchHistory.push({ query });
+      user.searchHistory.push({ date });
       await user.save();
   
       res.send({ success: true });
