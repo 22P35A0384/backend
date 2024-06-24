@@ -19,7 +19,13 @@ import mongoose from 'mongoose';
 
 const userSpySchema = new mongoose.Schema({
     mail: { type: String, required: true, unique: true },
-    login: { type: [String], default: [] }
+    login: { type: [String], default: [] },
+    searchHistory: [
+        {
+          query: String,
+          date: { type: Date, default: Date.now }
+        }
+      ]
 });
 
 const user_spy = mongoose.model('User History', userSpySchema);

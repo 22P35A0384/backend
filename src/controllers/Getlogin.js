@@ -22,7 +22,7 @@ const PostLogin = async (req, res, next) => {
     // Check if password is correct
     isPasswordCorrect = bcrypt.compareSync(pass, checkmail.password);
     if (!isPasswordCorrect) {
-        return res.status(401).json({ msg: 'Incorrect password' });
+        return res.status(401).json(false);
     }
 
     // Log user login time
@@ -50,7 +50,7 @@ const PostLogin = async (req, res, next) => {
 
     await logUserLogin(mail);
 
-    return res.status(200).json({ msg: 'Login successful' });
+    return res.status(200).json(true);
 };
 
 export default PostLogin;
