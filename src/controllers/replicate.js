@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 
 
 const replicate = new Replicate({
-  auth: 'r8_a2NMceRlJTESaJ4PlP2JtCnsDWwjtJ73Zwgcs',
+  auth: 'r8_HGpruu9YLQQ7PkRyuZi724i5sQgxbpw37TuBI',
 });
 
 const ImgGeneration = async (req, res) => {
