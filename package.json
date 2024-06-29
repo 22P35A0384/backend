@@ -23,6 +23,7 @@
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.9",
     "nodemon": "^3.0.3",
-    "razorpay": "^2.9.2"
+    "razorpay": "^2.9.2",
+    "replicate": "^0.30.2"
   }
 }

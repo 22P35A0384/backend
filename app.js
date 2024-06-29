@@ -31,6 +31,14 @@ import Userlistapp from './src/routers/userlistrouter.js';
 import Userlistupdateapp from './src/routers/userlistupdaterouter.js';
 import Removeuserapp from './src/routers/removeuserrouter.js';
 import Historyapp from './src/routers/historyrouter.js';
+import ImgGenerationapp from './src/routers/replicaterouter.js';
+import Txt2imgapp from './src/routers/txt2imgrouter.js';
+import Txt2vidapp from './src/routers/txt2vidrouter.js';
+import Txt2audapp from './src/routers/txt2audrouter.js';
+import Prmt2audapp from './src/routers/prmt2audrouter.js';
+import Adu2txtapp from './src/routers/aud2txtrouter.js';
+import Img2textapp from './src/routers/img2textrouter.js';
+import Editimgapp from './src/routers/editimgrouter.js';
 
 const app = express();
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -86,6 +94,14 @@ app.use('/',Userlistapp);
 app.use('/',Userlistupdateapp);
 app.use('/',Removeuserapp);
 app.use('/',Historyapp);
+app.use('/',ImgGenerationapp);
+app.use('/',Txt2imgapp);
+app.use('/',Txt2vidapp);
+app.use('/',Txt2audapp);
+app.use('/',Prmt2audapp);
+app.use('/',Adu2txtapp);
+app.use('/',Img2textapp);
+app.use('/',Editimgapp);
 
 // Testing Space...... (After Sucessfully Tested Then Put The Code To Controllers And Routers, Finally Import In The Actual Production Code)
 
