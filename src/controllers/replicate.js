@@ -3,11 +3,11 @@ import { readFile } from "node:fs/promises";
 
 
 const replicate = new Replicate({
-  auth: 'r8_a2NMceRlJTESaJ4PlP2JtCnsDWwjtJ73Zwgcs',
+  auth: process.env.replicate_token,
 });
 
 const ImgGeneration = async (req, res) => {
-    const { data} = req.body
+    const { data, gender, hairstyle } = req.body
     // const data = (await readFile("public/profiles/1708077067461_22P35A0384.jpg")).toString("base64");
     const reference_face_1 = `data:application/octet-stream;base64,${data}`;
     const output = await replicate.run(
@@ -22,7 +22,7 @@ const ImgGeneration = async (req, res) => {
             output_format: "webp",
             output_quality: 80,
             negative_prompt: "nsfw",
-            positive_prompt: `A handsome young man with pixie hair cut is sitting in a chair in a empty room with plain background`,
+            positive_prompt: `A handsome young ${gender} with ${hairstyle} hair cut is sitting in a chair in a empty room with plain background`,
             reference_face_1: reference_face_1,
             face_bounding_box: "[0., 0., 0., 0.]",
             text_control_scale: 7.5,
