@@ -1,13 +1,14 @@
 import Replicate from "replicate";
 
 const replicate = new Replicate({
-  auth: 'r8_a2NMceRlJTESaJ4PlP2JtCnsDWwjtJ73Zwgcs',
+  auth: process.env.replicate_token,
 });
 
 const Editimg = async (req, res) => {
-    const { img } = req.body
+    const { data } = req.body
+    const reference_face_1 = `data:application/octet-stream;base64,${data}`;
     const input = {
-        image: img,
+        image: reference_face_1,
         codeformer_fidelity: 1
     };
     
