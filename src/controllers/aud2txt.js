@@ -1,7 +1,7 @@
 import Replicate from "replicate";
 
 const replicate = new Replicate({
-  auth: 'r8_a2NMceRlJTESaJ4PlP2JtCnsDWwjtJ73Zwgcs',
+  auth: process.env.replicate_token,
 });
 
 const Aud2txt = async (req, res) => {
