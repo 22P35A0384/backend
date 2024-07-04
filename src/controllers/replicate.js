@@ -20,7 +20,7 @@ const ImgGeneration = async (req, res) => {
     }
     let updateuserdata;
     if(apicount===100){
-      return res.status(200).json(200)
+      return res.status(200).json(false)
     }else{
       updateuserdata = await user_list.findOneAndUpdate({ mail: user }, { $set: { count: apicount+1 } });
       const output = await replicate.run(
