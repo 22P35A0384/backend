@@ -4,6 +4,9 @@ const schema = mongoose.Schema;
 let User_List = new schema({
     mail:{
         type:String
+    },
+    count:{
+        type:Number
     }
 });
 

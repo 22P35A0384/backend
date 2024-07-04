@@ -39,6 +39,7 @@ import Prmt2audapp from './src/routers/prmt2audrouter.js';
 import Adu2txtapp from './src/routers/aud2txtrouter.js';
 import Img2textapp from './src/routers/img2textrouter.js';
 import Editimgapp from './src/routers/editimgrouter.js';
+import Getuserlistapp from './src/routers/senduserlistrouter.js';
 
 const app = express();
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -102,6 +103,7 @@ app.use('/',Prmt2audapp);
 app.use('/',Adu2txtapp);
 app.use('/',Img2textapp);
 app.use('/',Editimgapp);
+app.use('/',Getuserlistapp);
 
 // Testing Space...... (After Sucessfully Tested Then Put The Code To Controllers And Routers, Finally Import In The Actual Production Code)
 
